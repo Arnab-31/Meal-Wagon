@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    header('location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,11 +35,11 @@
             <div class="right-nav">
                 <div class="search-bar">
                     <input type="text" placeholder="search meals">
-                    <a href="search.html"><i class="fas fa-search"></i></a>
+                    <a href="search.php"><i class="fas fa-search"></i></a>
                 </div>
-                <a href="preferences.html">Preferences</a>
+                <a href="preferences.php">Preferences</a>
                 <a href=""  class="active">My Meal</a>
-                <h2>Hello, <br> First Name</h2>
+                <h2>Hello, <br><?php echo $_SESSION['username']; ?> </h2>
             </div>
         </nav>
 
@@ -52,31 +60,31 @@
                     <strong></strong>
                     
                 </div>
-                <h3>FAT</h3>
+                <h3>Fats</h3>
             </div>
             <div class="circle-2">
                 <div class="round-2" data-value="0.03" data-size="160" data-thickness="13">
                     <strong></strong>
                 </div>
-                <h3>FAT</h3>
+                <h3>Vitamins</h3>
             </div>
             <div class="circle-3">
                 <div class="round-3" data-value=".55" data-size="200" data-thickness="14">
                     <strong></strong>
                 </div>
-                <h3>FAT</h3>
+                <h3>Proteins</h3>
             </div>
             <div class="circle-4">
                 <div class="round-4" data-value="0.45" data-size="160" data-thickness="13">
                     <strong></strong>
                 </div>
-                <h3>FAT</h3>
+                <h3>Carbohydrates</h3>
             </div>
             <div class="circle-5">
                 <div class="round-5" data-value="0.12" data-size="120" data-thickness="12">
                     <strong></strong>
                 </div>
-                <h3>FAT</h3>
+                <h3>Minerals</h3>
             </div>
         </div>
 
@@ -101,7 +109,7 @@
                     </div>
                     <div class="btns">
                         <button class="consumed">Consumed</button>
-                        <a href="recipe.html" class="recipe">Get Recipe</a>
+                        <a href="recipe.php" class="recipe">Get Recipe</a>
                     </div>
                 </div>
                 <button class="view-more-1">View More</button>
@@ -126,7 +134,7 @@
                     </div>
                     <div class="btns">
                         <button class="consumed">Consumed</button>
-                        <a href="recipe.html" class="recipe">Get Recipe</a>
+                        <a href="recipe.php" class="recipe">Get Recipe</a>
                     </div>
                 </div>
                 <button class="view-more-2">View More</button>
@@ -153,7 +161,7 @@
                     </div>
                     <div class="btns">
                         <button class="consumed">Consumed</button>
-                        <a href="recipe.html" class="recipe">Get Recipe</a>
+                        <a href="recipe.php" class="recipe">Get Recipe</a>
                     </div>
                 </div>
 

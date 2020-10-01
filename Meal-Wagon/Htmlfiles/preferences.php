@@ -18,10 +18,10 @@
             <div class="right-nav">
                 <div class="search-bar">
                     <input type="text" placeholder="search meals">
-                    <a href="search.html"><i class="fas fa-search"></i></a>
+                    <a href="search.php"><i class="fas fa-search"></i></a>
                 </div>
                 <a href="" class="active">Preferences</a>
-                <a href="mealplan.html">My Meal</a>
+                <a href="mealplan.php">My Meal</a>
                 <h2>Hello <br> First Name</h2>
             </div>
         </nav>

@@ -15,26 +15,26 @@
                 <img class="img" src="../Images/image 1.jpg" alt="">
             </div>
             <div class="login-container">
-                <form action="index.html" class="login">
+                <form action="val.php" class="login" method="post">
                     <img class="user-img" src="../Images/undraw_profile_pic_ic5t (2).svg" alt="">
                     <h2>Log In</h2>
                     <div class="input-div one">
                         <div class="i">
                             <i class="fas fa-user"></i>
-                            <input class="input" type="text" placeholder="Username">
+                            <input class="input" type="text" placeholder="Username" name="username">
                         </div>
                     </div>
                     <div class="input-div two">
                         <div class="i">
                             <i class="fas fa-lock"></i>
-                            <input class="input" type="password" placeholder="Password">
+                            <input class="input" type="password" placeholder="Password" name="password">
                         </div>
                     </div>
                     <input type="submit" class="btn" value="Login">
                     <h5>New to Meal Wagon?</h5>
                     <div class="signup">
                         
-                        <a href="signup.html">Sign-Up </a>
+                        <a href="signup.php">Sign-Up </a>
 
                         <h5> now</h5>
                     </div>

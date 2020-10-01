@@ -29,10 +29,10 @@
             <div class="right-nav">
                 <div class="search-bar">
                     <input type="text" placeholder="search meals">
-                    <a href="../Htmlfiles/search.html"><i class="fas fa-search"></i></a>
+                    <a href="../Htmlfiles/search.php"><i class="fas fa-search"></i></a>
                 </div>
-                <a href="preferences.html">Preferences</a>
-                <a href="mealplan.html"  class="active">My Meal</a>
+                <a href="preferences.php">Preferences</a>
+                <a href="mealplan.php"  class="active">My Meal</a>
                 <h2>Hello, <br> First Name </h2>
             </div>
         </nav>

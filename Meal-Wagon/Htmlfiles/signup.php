@@ -15,31 +15,31 @@
                 <img class="img" src="../Images/image 1.jpg" alt="">
             </div>
             <div class="login-container">
-                <form action="signup.html" class="login">
+                <form action="reg.php" class="login" method="post">
                     <img class="user-img" src="../Images/undraw_profile_pic_ic5t (2).svg" alt="">
                     <h2>Sign Up</h2>
                     <div class="input-div one">
                             <div class="i">
                                 <i class="fa fa-user"></i>
-                                <input class="input" type="text" placeholder="Name">
+                                <input class="input" type="text" placeholder="Name" name="username">
                             </div>
                     </div>
                     <div class="input-div one">
                         <div class="i">
                             <i class="fa fa-envelope"></i>
-                            <input class="input" type="email" placeholder="E-mail Address">
+                            <input class="input" type="email" placeholder="E-mail Address" name="email">
                         </div>
                     </div>
                     <div class="input-div one">
                         <div class="i">   
                             <i class="fa fa-unlock-alt" aria-hidden="true"></i>
-                            <input class="input" type="password" placeholder="Create Password">
+                            <input class="input" type="password" placeholder="Create Password" name="password">
                         </div> 
                      </div>
                      <div class="input-div one">
                         <div class="i">
                             <i class="fa fa-lock"></i>
-                            <input class="input" type="pass" placeholder="Confirm Password">
+                            <input class="input" type="pass" placeholder="Confirm Password" name="cnfpassword">
                         </div>
                      </div>
                     
@@ -48,7 +48,7 @@
                     <h5>Already have an Account?</h5>
                     <div class="signup">
                         
-                        <a href="login.html">Log-in </a>
+                        <a href="login.php">Log-in </a>
 
                         <h5> now</h5>
                     </div>

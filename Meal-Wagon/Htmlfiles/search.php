@@ -29,8 +29,8 @@
                     <input type="text" placeholder="search meals">
                     <a></button><i class="fas fa-search"></i></a>
                 </div>
-                <a href="preferences.html">Preferences</a>
-                <a href="mealplan.html"  class="active">My Meal</a>
+                <a href="preferences.php">Preferences</a>
+                <a href="mealplan.php"  class="active">My Meal</a>
                 <h2>Hello <br> First Name</h2>
             </div>
         </nav>front
@@ -67,7 +67,7 @@
                         </div>
 
                         <div class="btns">
-                            <a href="../Htmlfiles/recipe.html" class="recipe">RECIPE</a>
+                            <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
                             <button class="add-1">ADD</button>
                         </div>
                         
@@ -114,7 +114,7 @@
                         </div>
 
                         <div class="btns">
-                            <a href="../Htmlfiles/recipe.html" class="recipe">RECIPE</a>
+                            <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
                             <button class="add-2">ADD</button>
                         </div>
                         
@@ -162,7 +162,7 @@
                         </div>
 
                         <div class="btns">
-                            <a href="../Htmlfiles/recipe.html" class="recipe">RECIPE</a>
+                            <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
                             <button class="add-3">ADD</button>
                         </div>
                         
