@@ -1,0 +1,119 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.logo{
+    z-index: 1;
+    position: absolute;
+}
+.image{
+    
+    height: 100vh;
+    left: 0;
+    bottom: 0;
+    width: 65%;
+}
+.img{
+    height: 100vh;
+    width: 65vw;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+
+}
+
+.user-img{
+    height: 20vh;
+    margin: 1rem;
+    
+}
+
+.login-container{
+    display: flex;
+    justify-content: center;
+    width: 35%;
+    transition: all .4s;
+}
+.login-container h2{
+    color: #f1513c;
+    margin-bottom: 1.5rem;
+    font-size: 2.1rem;
+}
+.login{
+    margin: 2rem 0;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   text-align: center;
+}
+
+.input-div{
+    
+    margin: 12px 0;
+    padding: 12px 18px;
+    background-color:  rgb(223, 222, 222);
+    font-size:1rem;
+    border-radius: 5px;
+    margin: .3rem;
+
+}
+.input-div .input{
+    padding: 0;
+    padding-left: 12px;
+    background-color: rgb(223, 222, 222);
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    color: #c41700;
+}
+
+
+.login .btn{
+
+    padding: 12px ;
+    margin: 12px 0;
+    font-size: 1.2rem;
+    background: #f1513c;
+    border: none;
+    border-radius: 1.3rem;
+    color: white;
+    outline: none;
+    transition: all .3s;
+    margin-bottom: 2rem;
+    margin-top: 2rem;
+}
+.btn:hover{
+   
+    padding: 12px;
+    transition: all .2s; 
+    font-size: 1.22rem;
+    border-radius: 1.3rem;
+    background: #f13f27;
+    margin-top: 1.8rem;
+    margin-bottom: 1.6rem;
+}
+
+.signup{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.signup h5{
+    padding-top: .2rem;
+}
+a{
+    color: #f1513c;
+    font-style: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: .2s;
+    margin-right: 5px;
+}
+a:hover{
+    color:rgba(255,0,0,1);
+    font-size: 1.2rem;
+}

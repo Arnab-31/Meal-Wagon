@@ -1,0 +1,248 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.evr{
+    display: flex;
+    flex-direction: column;
+
+}
+.container-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f1513c;
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 0px 8px #363636;
+}
+.container-nav img{
+    height: 3.5rem;
+    margin: 8px;
+}
+.container-nav .right-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin: 18px .5rem;
+}
+.right-nav .search-bar{
+    background-color:#f1513c;
+    padding:6px ;
+    border-radius: 100px;
+    border: 2px solid white;
+}
+.search-bar input{
+    background: #f1513c;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: white;
+}
+.search-bar a{
+    border-radius: 20px;
+    background-color: #f1513c;
+    font-size: 1rem;
+    border-radius: 200px;
+    padding: 6px;
+    border: none;
+    outline:none;
+    transition: all .2s;
+}
+.search-bar a i{
+    padding-top: 7px;
+}
+.search-bar a:hover{
+    background-color: #e01a00;
+    padding: 9px;
+}
+.search-bar input::placeholder{
+    color: white;
+}
+.search-bar i{
+    color: white;
+}
+
+.right-nav h2{
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    font-weight: 200;
+    
+    margin-right: 20px;
+    cursor: default;
+}
+.right-nav a{
+    font-size: 1rem;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0;
+    border-radius: 1rem;
+    transition: all .2s;
+}
+.right-nav .active,.right-nav a:hover{
+    font-size: 1.1rem;
+    background-color: #e01a00;
+}
+
+.top-img img{
+    position: relative;
+}
+.top-img .txt{
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    cursor:default;
+    font-family: 'Cookie', cursive;
+    font-size: 5.2rem;
+    font-weight: 100;
+    color: #f1513c;
+    margin-top: 30px;
+    word-spacing: 10px;
+}
+.top-img .txt #sml{
+    color: #adadad;
+    font-size: 1.8rem;
+    font-weight: lighter;
+    margin-top: 20px;
+    font-family: 'Bree Serif', serif;
+    word-spacing: 4px;
+}
+
+.main{
+    position: relative;
+    z-index: 0;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    
+}
+.main h3{
+    margin: .5rem;
+    font-family: 'Bebas Neue', cursive;
+    font-size: 2.6rem;
+    font-weight: lighter;
+    color: #363636;
+    margin-bottom: 2rem;
+}
+
+.main .cal-details{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 20px;
+    padding-bottom: 2rem;
+    
+}
+.cal-details input{
+    padding: .4rem;
+    padding-left: .6rem;
+    border-radius: 10px;
+    background-color: #d3d0d0;
+    border: none;
+    outline: none;
+    margin-right: 2rem;
+    font-family: 'Montserrat', sans-serif;
+}
+.cal-details p{
+    font-family: 'Bree Serif', serif;
+    font-weight: 100;
+    color: #363636;
+    text-align: left;
+}
+.cal-details p a{
+    color: #f1513c;
+    text-decoration:none ;
+    font-size:1.05rem;
+    transition: all .2s;
+}
+.cal-details a:hover{
+    font-size: 1.1rem;
+}
+.main hr{
+    position: static;
+    margin: 2rem 0;
+    width: 52%;
+    margin-left: 22rem;
+    
+    border: 2px solid #f1513c;
+  
+}
+.main .diet-types{
+   margin-bottom: 1rem;
+}
+.main .diet-types button{
+
+    border: none;
+    border-radius: 10px;
+    align-content: center;
+    width: max-content;
+    height: max-content;
+    margin: 20px;
+}
+.diet-types img{
+    height: 6rem;
+    width: 6.5rem;
+    transition: all .3s;
+}
+.diet-types img:hover{
+    height: 6.5rem;
+    width: 7rem;
+    box-shadow: 0px 0px 8px #e5e5e5;
+    padding-bottom: 0;
+}
+
+
+.main .cui-int{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+.cui-int .cui{
+    margin-right: 5rem;
+}
+.cui-int .int{
+    margin-left: 6rem;
+}
+.cui-int select{
+
+    padding: 1rem;
+    font-size: 1rem;
+    background-color: #d3d0d0;
+    border: none;
+    outline: none;
+    border-radius: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#save{
+    margin: 3rem 0;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    color: white;
+    background-color: #f1513c;
+    border: none;
+    border-radius: 100px;
+    outline: none;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+#save:hover{
+    background-color: white;
+    color: #f1513c;
+    border: 1px solid #f1513c;
+}

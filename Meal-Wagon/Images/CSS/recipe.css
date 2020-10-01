@@ -1,0 +1,249 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
+.content{
+    overflow-x: hidden;
+}
+
+.container-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-color: #f1513c;
+    z-index: 2;
+    position: fixed;
+    width: 100%;
+    box-shadow: 0px 0px 8px #363636;
+}
+
+.container-nav img{
+    height: 3.5rem;
+    margin: 8px;
+}
+.container-nav .right-nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 50%;
+    margin: 18px .5rem;
+}
+.right-nav .search-bar{
+    background-color:#f1513c;
+    padding:6px ;
+    border-radius: 100px;
+    border: 2px solid white;
+}
+.search-bar input{
+    background: #f1513c;
+    border: none;
+    outline: none;
+    font-size: 1rem;
+    color: white;
+}
+.search-bar a{
+    border-radius: 20px;
+    background-color: #f1513c;
+    font-size: 1rem;
+    border-radius: 200px;
+    padding: 6px;
+    border: none;
+    outline:none;
+    transition: all .2s;
+}
+.search-bar a i{
+    padding-top: 7px;
+}
+.search-bar a:hover{
+    background-color: #e01a00;
+    padding: 9px;
+}
+.search-bar input::placeholder{
+    color: white;
+}
+.search-bar i{
+    color: white;
+}
+
+.right-nav h2{
+    font-size: 1.2rem;
+    color: white;
+    font-weight: 300;
+    text-align: center;
+    font-weight: 200;
+    
+    margin-right: 20px;
+    cursor: default;
+}
+.right-nav a{
+    font-size: 1rem;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0;
+    border-radius: 1rem;
+    transition: all .2s;
+}
+.right-nav .active,.right-nav a:hover{
+    font-size: 1.1rem;
+    background-color: #e01a00;
+}
+
+.main{
+
+    padding:0rem 2rem ;
+    padding-top: 7rem;
+    padding-bottom: 2rem;
+}
+
+.dish{
+    
+    display: flex;
+    flex-direction: row;
+    background-color: #E5E5E5 ;
+    height: 32rem;
+    border-radius: 8px;
+    margin-bottom: 30px;
+    box-shadow: 0px 0px 8px #363636;
+}
+.dish img{
+    width: 620px;
+    height: 430px;
+    margin: 30px;
+}
+
+.dish div{
+    margin: 30px;
+    overflow: hidden;
+}
+
+.dish h1{
+    font-size: 5rem;
+    font-weight: lighter;
+    font-family: 'Cookie', cursive;
+    color: #f1513c;
+}
+.dish h1 hr{
+    margin: 0;
+    padding: 0;
+    height: 2px;
+    background-color: #f1513c;
+    border: none;
+}
+.dish h2{
+
+    margin: 20px 0;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    margin-bottom: 30px;
+
+}
+
+.dish h3{
+    
+    font-weight: 100;
+}
+
+.dish .add{
+    margin-top: 3rem;
+    margin-left: 1rem;
+    padding: 5px 40px;
+    font-size: 1.3rem;
+    background-color: white;
+    color: #f1513c;
+    border: 2px solid #f1513c;
+    outline: none;
+    border-radius: 20px;
+    transition: all .3s ease;
+}
+
+.dish .add:hover{
+    color: white;
+    background-color: #f1513c;
+    border: 2px solid white;
+}
+
+.details{
+    display: flex;
+    flex-direction: column;
+    background-color: #E5E5E5 ;
+    border-radius: 8px;
+    box-shadow: 0px 0px 8px #363636;
+}
+
+.details .navbar{
+    margin: 2rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.navbar button{
+
+    padding: 5px 4rem;
+    font-size: 2.2rem;
+    border: none;
+    font-weight: 100;
+    outline: none;
+    color: #f1513c;
+    font-family: 'Bebas Neue', cursive;
+    background-color: #E5E5E5;
+    cursor: pointer;
+}
+
+#ing{
+    margin-left: 30px;
+    transition: all .3s ease;
+}
+#step{
+    transition: all .3s ease;
+}
+#equip{
+    margin-right: 30px;
+    transition: all .3s ease;
+}
+
+.content{
+    display: flex;
+    flex: row;
+    justify-content: center;
+}
+
+.content .ing{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.content .ing div{
+    padding:2rem 8rem;
+    font-size: 1.4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}
+
+.content .steps{
+    text-align: left;
+    font-size: 1.4rem;
+    line-height: 2.5;
+    
+}
+
+.content .equip{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    line-height: 2.5;
+    
+}
+.content .equip div{
+    padding:2rem 8rem;
+    font-size: 1.4rem;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 500;
+}

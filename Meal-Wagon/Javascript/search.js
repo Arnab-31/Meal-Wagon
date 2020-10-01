@@ -1,0 +1,25 @@
+$('.add-1').click(function(){
+    $('.add-meal-1').css({"transform":"translateX(0)"});
+    $('.front-1').css({"filter":"blur(4px)"})
+})
+$('.add-2').click(function(){
+    $('.add-meal-2').css({"transform":"translateX(0)"});
+    $('.front-2').css({"filter":"blur(4px)"})
+})
+$('.add-3').click(function(){
+    $('.add-meal-3').css({"transform":"translateX(0)"});
+    $('.front-3').css({"filter":"blur(4px)"})
+})
+
+$('#close-1').click(function(){
+    $('.add-meal-1').css({"transform":"translateX(100%)"});
+    $('.front-1').css({"filter":"blur(0px)"})
+})
+$('#close-2').click(function(){
+    $('.add-meal-2').css({"transform":"translateX(100%)"});
+    $('.front-2').css({"filter":"blur(0px)"})
+})
+$('#close-3').click(function(){
+    $('.add-meal-3').css({"transform":"translateX(100%)"});
+    $('.front-3').css({"filter":"blur(0px)"})
+})
