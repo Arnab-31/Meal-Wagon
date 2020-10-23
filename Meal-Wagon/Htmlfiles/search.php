@@ -1,10 +1,3 @@
-<?php
-session_start();
-if(!isset($_SESSION['username']))
-{
-    header('location:login.php');
-}
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,12 +26,22 @@ if(!isset($_SESSION['username']))
             <img src="..Images/logo (1).png" alt="">
             <div class="right-nav">
                 <div class="search-bar">
-                    <input type="text" placeholder="search meals">
-                    <a></button><i class="fas fa-search"></i></a>
+                    <form action="search.php" method="GET">
+                        <input type="text" placeholder="search meals" name="search">
+                        <button><a><i class="fas fa-search"></i></a></button>
+                    </form>
+                    <?php
+                    if(!empty($_GET['search'])){
+                        $search = $_GET['search'];
+                        $meals_url = 'https://api.spoonacular.com/recipes/complexSearch?query=' . $search . '&apiKey=9d29dd77f35b4d199ea2925104bb46d8';
+                        $meals_json = file_get_contents($meals_url);
+                        $meals_array = json_decode($meals_json, true);
+                    }
+                    ?>
                 </div>
                 <a href="preferences.php">Preferences</a>
                 <a href="mealplan.php"  class="active">My Meal</a>
-                <h2>Hello <br> <?php echo $_SESSION['username']; ?></h2>
+                <h2>Hello <br> First Name</h2>
             </div>
         </nav>front
         <div class="top-img">
@@ -52,158 +55,167 @@ if(!isset($_SESSION['username']))
 
         <div class="drop-down">
             <select name="ingredients" id="ingr">
-                <option value="" selected>Select Your Ingredients</option>
+                <option value="" disabled selected>Select Your Ingredients</option>
                 <option value="Salt">Salt</option>
                 <option value="Sugar">Sugar</option>
             </select>
         </div>
-
-        <section class="items">
-            <div class="card">
-                <div class="front-1">
-                    <img src="../Images/image 22.png" alt="">
-                    <div class="text">
-                        <div class="name">
-                            <h2>Chilli Potato</h2>
-                            <div class="cal">
-                                Calories 100
+        
+        <?php
+            if(!empty($meals_array))
+            {
+                $meals = $meals_array['results'];
+                for($i=0;$i<9;$i=$i+3){
+                    //echo "<h2>". $meal['title'] . "</h2>";
+                    echo '<section class="items">
+                    <div class="card">
+                        <div class="front-1">
+                            <img src=' . $meals[$i]['image'] . ' alt="">
+                            <div class="text">
+                                <div class="name">
+                                    <h2>' . $meals[$i]['title'] . '</h2>
+                                    <div class="cal">
+                                        Calories 100
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    The recipe Chicken Bbq could satisfy your American craving in about 1 hour.
+                                </div>
+        
+                                <div class="btns">
+                                    <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
+                                    <button class="add-1">ADD</button>
+                                </div>
+                                
                             </div>
                         </div>
-                        <div class="details">
-                            The recipe Chicken Bbq could satisfy your American craving in about 1 hour.
-                        </div>
-
-                        <div class="btns">
-                            <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
-                            <button class="add-1">ADD</button>
-                        </div>
                         
-                    </div>
-                </div>
-                
-                <div class="add-meal-1">
-                    <button id="close-1">X</button>
-                    <div class="inputs">
-                        <div>
-                            <input type="radio" id="breakfast" name="meal" value="breakfast">
-                            <label for="breakfast">Breakfast</label>
+                        <div class="add-meal-1">
+                            <button id="close-1">X</button>
+                            <div class="inputs">
+                                <div>
+                                    <input type="radio" id="breakfast" name="meal" value="breakfast">
+                                    <label for="breakfast">Breakfast</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="lunch" name="meal" value="lunch">
+                                    <label for="breakfast">Lunch</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="dinner" name="meal" value="dinner">
+                                    <label for="breakfast">Dinner</label>
+                                </div>  
+                                
+                            </div>
+                            <div class="save">
+                                <button class="save-1">Save</button>
+                            </div>
+                            
+                            
                         </div>
-                        <div>
-                            <input type="radio" id="lunch" name="meal" value="lunch">
-                            <label for="breakfast">Lunch</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dinner" name="meal" value="dinner">
-                            <label for="breakfast">Dinner</label>
-                        </div>  
-                        
-                    </div>
-                    <div class="save">
-                        <button class="save-1">Save</button>
-                    </div>
                     
-                    
-                </div>
-            
-            </div>
-            <div class="card">
-                <div class="front-2">
-                    <img src="../Images/image 22.png" alt="">
-                    <div class="text">
-                        <div class="name">
-                            <h2>Chilli Potato</h2>
-                            <div class="cal">
-                                Calories 100
+                    </div>
+                    <div class="card">
+                        <div class="front-2">
+                            <img src=' . $meals[$i+1]['image'] . ' alt="">
+                            <div class="text">
+                                <div class="name">
+                                    <h2>' . $meals[$i+1]['title'] . '</h2>
+                                    <div class="cal">
+                                        Calories 100
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    The recipe Chicken Bbq could satisfy your American craving in about 1 hour.
+                                </div>
+        
+                                <div class="btns">
+                                    <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
+                                    <button class="add-2">ADD</button>
+                                </div>
+                                
                             </div>
                         </div>
-                        <div class="details">
-                            The recipe Chicken Bbq could satisfy your American craving in about 1 hour.
-                        </div>
-
-                        <div class="btns">
-                            <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
-                            <button class="add-2">ADD</button>
-                        </div>
                         
-                    </div>
-                </div>
-                
-                <div class="add-meal-2">
-                    <button id="close-2">X</button>
-                    <div class="inputs">
-                        <div>
-                            <input type="radio" id="breakfast" name="meal" value="breakfast">
-                            <label for="breakfast">Breakfast</label>
+                        <div class="add-meal-2">
+                            <button id="close-2">X</button>
+                            <div class="inputs">
+                                <div>
+                                    <input type="radio" id="breakfast" name="meal" value="breakfast">
+                                    <label for="breakfast">Breakfast</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="lunch" name="meal" value="lunch">
+                                    <label for="breakfast">Lunch</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="dinner" name="meal" value="dinner">
+                                    <label for="breakfast">Dinner</label>
+                                </div>
+                                
+                            </div>
+                            <div class="save">
+                                <button class="save-2">Save</button>
+                            </div>
+                            
+                            
+                            
                         </div>
-                        <div>
-                            <input type="radio" id="lunch" name="meal" value="lunch">
-                            <label for="breakfast">Lunch</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dinner" name="meal" value="dinner">
-                            <label for="breakfast">Dinner</label>
-                        </div>
-                        
+                    
                     </div>
-                    <div class="save">
-                        <button class="save-2">Save</button>
-                    </div>
-                    
-                    
-                    
-                </div>
-            
-            </div>
-            <div class="card">
-                <div class="front-3">
-                    <img src="../Images/image 22.png" alt="">
-                    <div class="text">
-                        <div class="name">
-                            <h2>Chilli Potato</h2>
-                            <div class="cal">
-                                Calories 100
+                    <div class="card">
+                        <div class="front-3">
+                            <img src=' . $meals[$i+2]['image'] . ' alt="">
+                            <div class="text">
+                                <div class="name">
+                                    <h2>' . $meals[$i+2]['title'] . '</h2>
+                                    <div class="cal">
+                                        Calories 100
+                                    </div>
+                                </div>
+                                <div class="details">
+                                    The recipe Chicken Bbq could satisfy your American craving in about 1 hour.
+                                </div>
+        
+                                <div class="btns">
+                                    <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
+                                    <button class="add-3">ADD</button>
+                                </div>
+                                
                             </div>
                         </div>
-                        <div class="details">
-                            The recipe Chicken Bbq could satisfy your American craving in about 1 hour.
-                        </div>
-
-                        <div class="btns">
-                            <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
-                            <button class="add-3">ADD</button>
-                        </div>
                         
-                    </div>
-                </div>
-                
-                <div class="add-meal-3">
-                    <button id="close-3">X</button>
-                    <div class="inputs">
-                        <div>
-                            <input type="radio" id="breakfast" name="meal" value="breakfast">
-                            <label for="breakfast">Breakfast</label>
+                        <div class="add-meal-3">
+                            <button id="close-3">X</button>
+                            <div class="inputs">
+                                <div>
+                                    <input type="radio" id="breakfast" name="meal" value="breakfast">
+                                    <label for="breakfast">Breakfast</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="lunch" name="meal" value="lunch">
+                                    <label for="breakfast">Lunch</label>
+                                </div>
+                                <div>
+                                    <input type="radio" id="dinner" name="meal" value="dinner">
+                                    <label for="breakfast">Dinner</label>
+                                </div>
+                                
+                            </div>
+                            <div class="save">
+                                <button class="save-3">Save</button>
+                            </div>
+                                
+                            
+                            
                         </div>
-                        <div>
-                            <input type="radio" id="lunch" name="meal" value="lunch">
-                            <label for="breakfast">Lunch</label>
-                        </div>
-                        <div>
-                            <input type="radio" id="dinner" name="meal" value="dinner">
-                            <label for="breakfast">Dinner</label>
-                        </div>
-                        
-                    </div>
-                    <div class="save">
-                        <button class="save-3">Save</button>
-                    </div>
-                        
                     
+                    </div>
                     
-                </div>
-            
-            </div>
-            
-        </section>
+                </section>';
+                }
+            }
+        ?>
     </section>
     <script type="text/javascript" src="../Javascript/search.js"></script>
 </body>
