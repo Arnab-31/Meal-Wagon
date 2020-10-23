@@ -1,3 +1,11 @@
+<?php
+session_start();
+if(!isset($_SESSION['username']))
+{
+    header('location:login.php');
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -33,7 +41,7 @@
                 </div>
                 <a href="preferences.php">Preferences</a>
                 <a href="mealplan.php"  class="active">My Meal</a>
-                <h2>Hello, <br> First Name </h2>
+                <h2>Hello, <br> <?php echo $_SESSION['username']; ?> </h2>
             </div>
         </nav>
 

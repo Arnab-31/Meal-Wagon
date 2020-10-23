@@ -39,7 +39,7 @@
                      <div class="input-div one">
                         <div class="i">
                             <i class="fa fa-lock"></i>
-                            <input class="input" type="pass" placeholder="Confirm Password" name="cnfpassword">
+                            <input class="input" type="password" placeholder="Confirm Password" name="cnfpassword">
                         </div>
                      </div>
                     
