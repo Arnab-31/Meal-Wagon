@@ -247,3 +247,65 @@ body{
     font-family: 'Montserrat', sans-serif;
     font-weight: 500;
 }
+
+@media (max-width: 1170px){
+    .container-nav .right-nav{
+        width: 55%;
+    }
+}
+
+@media (max-width: 1070px){
+    .container-nav .right-nav{
+        width: 60%;
+    }
+}
+@media (max-width: 970px){
+    .container-nav .right-nav{
+        width: 65%;
+    }
+}
+@media (max-width: 870px){
+    .container-nav .right-nav{
+        width: 70%;
+    }
+}
+
+@media(max-width:1200px){
+    .dish h1{
+        font-size: 4.8rem;
+    }
+    .dish h2{
+        font-size: 1.4rem;
+        margin: 18px;
+    }
+    .dish .add{
+        font-size: 1.25rem;
+    }
+    
+}
+
+@media(max-width:1161px){
+    .dish h1{
+        font-size: 4.6rem;
+    }
+    .dish h2{
+        font-size: 1.45rem;
+        margin: 16px;
+    }
+    .dish .add{
+        font-size: 1.22rem;
+    }
+}
+
+@media(max-width:1124px){
+    .dish h1{
+        font-size: 4.4rem;
+    }
+    .dish h2{
+        font-size: 1.3rem;
+        margin: 14px;
+    }
+    .dish .add{
+        font-size: 1.2rem;
+    }
+}
