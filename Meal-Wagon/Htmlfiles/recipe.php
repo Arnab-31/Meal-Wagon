@@ -1,11 +1,3 @@
-<?php
-session_start();
-if(!isset($_SESSION['username']))
-{
-    header('location:login.php');
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -41,24 +33,60 @@ if(!isset($_SESSION['username']))
                 </div>
                 <a href="preferences.php">Preferences</a>
                 <a href="mealplan.php"  class="active">My Meal</a>
-                <h2>Hello, <br> <?php echo $_SESSION['username']; ?> </h2>
+                <h2>Hello</h2>
             </div>
         </nav>
+        <?php
+            $id=$_GET['id'];
+            $recipe_url = "https://api.spoonacular.com/recipes/" . $id . "/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true";
+            $recipe_json = file_get_contents($recipe_url);
+            $recipe = json_decode($recipe_json, true);
+            $ingredients_data = $recipe['extendedIngredients'];
+            $steps_data =  $recipe['analyzedInstructions'];
+            $ingredients="";
+            $quantity="";
+            foreach($ingredients_data as $ingredient){
+                $ingredients = $ingredients . $ingredient['name'] . ' <br><br>';
+                $quantity = $quantity . $ingredient['amount'] . ' ' . $ingredient['unit'] . ' <br><br>';
+            }
 
-        <section class="main">
+            $i=1;
+            $steps_string="";
+            foreach($steps_data as $steps){
+                $s=$steps['steps'];
+                foreach($s as $step){
+                    $steps_string = $steps_string . $i . '. ' . $step['step'] . '<br>';
+                    $i++;
+                }
+            }
+            
+            $equipment_url = "https://api.spoonacular.com/recipes/" . $id . "/equipmentWidget.json?apiKey=9d29dd77f35b4d199ea2925104bb46d8";
+            $equipment_json = file_get_contents($equipment_url);
+            $equipments_data = json_decode($equipment_json, true);
+            $equipments = $equipments_data['equipment'];
+            $equipment_string = "";
+            $index="";
+            $i=1;
+            foreach($equipments as $equip){
+                $equipment_string = $equipment_string . $equip['name'] . ' <br>';
+                $index = $index . $i . '. <br> ';
+                $i++;
+            }
+
+        echo '<section class="main">
             <div class="dish">
-                <img src="../Images/image 31.png" alt="">
+                <img src=" ' . $recipe['image'] . '" alt="">
                 <div class="recipe">
-                    <h1>Chilli Lemone Rice <hr></h1>
+                    <h1>' . $recipe['title'] . '<hr></h1>
                     <div class="front">
                         
-                        <h2><b>CALORIES - 200</b> </h2>
-                        <h3>Protiens - 34</h3>
-                        <h3>Fat - 23</h3>
-                        <h3>Saturated Fat - 3</h3>
-                        <h3>Carbohydrate - 23</h3>
-                        <h3>Sugar - 2.6</h3>
-                        <h3>Sodium - 5</h3>
+                        <h2><b>CALORIES - ' . $recipe['nutrition']['nutrients'][0]['amount'] . '</b> </h2>
+                        <h3>Protiens - ' . $recipe['nutrition']['nutrients'][9]['amount'] . '</h3>
+                        <h3>Fat - ' . $recipe['nutrition']['nutrients'][1]['amount'] . '</h3>
+                        <h3>Saturated Fat - ' . $recipe['nutrition']['nutrients'][2]['amount'] . '</h3>
+                        <h3>Carbohydrate - ' . $recipe['nutrition']['nutrients'][3]['amount'] . '</h3>
+                        <h3>Sugar - ' . $recipe['nutrition']['nutrients'][5]['amount'] . '</h3>
+                        <h3>Sodium - ' . $recipe['nutrition']['nutrients'][7]['amount'] . '</h3>
 
                         <button class="add">ADD TO MEAL</button>
                     </div>
@@ -77,34 +105,27 @@ if(!isset($_SESSION['username']))
                 <div class="content">
 
                     <div class="ing">
-                        <div>
-                            Flour <br><br> Granulated Sugar <br><br> Fresh Lemon Juice <br><br>Flour <br><br> Fresh Lemon Juice
+                        <div> ' . $ingredients . '
                         </div>
-                        <div>
-                            2 TbSpn <br><br> 2 TbSpn <br><br> 2 TbSpn <br><br> 2 TbSpn <br><br> 2 TbSpn
+                        <div> ' . $quantity . '
                         </div>
                     </div>
 
-                    <div class="steps">
-
-                        1. Put the garlic in a pan and then add the onion. <br>
-                        2. Add some salt and oregano. <br>
-                        3. Combine the borboun and sugar in a small saucepan and cook over high flame. <br>
-                        4. Add some salt and oregano. <br>
+                    <div class="steps"> ' .$steps_string . '
                     </div>
 
                     <div class="equip">
-                        <div>
-                            1. <br> 2. <br> 3. <br>4.
+                        <div> ' .  $index . '
                         </div>
-                        <div>
-                            Pie Pan <br> Oven <br> Bow <br> Pan
+                        <div>' . $equipment_string . '
                         </div>
                     </div>
                 </div>
 
             </div>
-        </section>
+        </section>'
+        ?>
+        
         
 
     </section>

@@ -19,6 +19,41 @@ if(!isset($_SESSION['username']))
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <title>Meal_Wagon</title>
 </head>
+
+<?php
+    if(!empty($_POST['calories']))
+    {
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+
+        // Create connection
+        $conn = new mysqli($servername, $username, $password);
+        // Check connection
+        if ($conn->connect_error) {
+        die("Connection failed: " . $conn->connect_error);
+        }
+
+        // Selecting the database
+        $db=mysqli_select_db($conn,'MealWagon');
+        if (!$db)
+                echo "Database not selected" . "<br>";
+            else
+                echo "Database SELECTED" . "<br>";
+
+
+        $calories = $_POST['calories'];
+        #$cuisine = $_POST['cuisine'];
+        #$intolerance = $_POST['intolerance'];
+        $sql = 'INSERT INTO user (Dailiy_Calorie_Target) VALUES (' . $calories . ') WHERE Name = ' . $_SESSION['username'];
+        if ($conn->query($sql) === TRUE) {
+        } else {
+        echo "Error inserting data: " . $conn->error . "<br>";
+        }
+
+    }
+?>
+
 <body>
     <section class="evr">
         <nav class="container-nav">
@@ -44,15 +79,16 @@ if(!isset($_SESSION['username']))
 
         <div class="main">
             <h3>ENTER DAILY CALORIES</h3>
+            <form action="" method="POST">
+            
             <div class="cal-details">
-                <input type="number" placeholder="Enter Calories">
+                <input type="number" placeholder="Enter Calories" name="calories">
                 <p>Not sure? Head over to <a href="">BMI/Calories calculator</a> to calculate your <br> daily calories,BMR and much more.</p>
     
             </div>
             <hr>
             <h3>CHOOSE DIET TYPE</h3>
             <div class="diet-types">
-
                 <button><img src="../Images/Group 15.png" alt=""></button>
                 <button><img src="../Images/Group 14.png" alt=""></button>
                 <button><img src="../Images/Group 13.png" alt=""></button>
@@ -94,6 +130,7 @@ if(!isset($_SESSION['username']))
             <div>
                 <button id="save">SAVE AND CONTINUE</button>
             </div>
+            </form>
             
 
 

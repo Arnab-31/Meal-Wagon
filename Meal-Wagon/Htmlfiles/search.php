@@ -36,6 +36,22 @@
                         $meals_url = 'https://api.spoonacular.com/recipes/complexSearch?query=' . $search . '&apiKey=9d29dd77f35b4d199ea2925104bb46d8';
                         $meals_json = file_get_contents($meals_url);
                         $meals_array = json_decode($meals_json, true);
+
+                        $meals_calorie=array();
+                        $meals_summary=array();
+                
+                        for($i=0;$i<9;$i++)
+                        {
+                            $meal_id = $meals_array['results'][$i]['id'];
+                            $info_url = 'https://api.spoonacular.com/recipes/' . $meal_id . '/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true';
+                            $info_json = file_get_contents($info_url);
+                            $info_array = json_decode($info_json, true);
+                            $summary=$info_array['summary'];
+                            str_replace('<b>', '', $summary);
+                            str_replace('</b>', '', $summary);
+                            array_push($meals_summary,substr( $summary,0,10));
+                            array_push($meals_calorie,$info_array['nutrition']['nutrients'][0]['amount']);
+                        }
                     }
                     ?>
                 </div>
@@ -75,15 +91,14 @@
                                 <div class="name">
                                     <h2>' . $meals[$i]['title'] . '</h2>
                                     <div class="cal">
-                                        Calories 100
+                                        Calories ' . $meals_calorie[$i] . '
                                     </div>
                                 </div>
                                 <div class="details">
-                                    The recipe Chicken Bbq could satisfy your American craving in about 1 hour.
                                 </div>
         
                                 <div class="btns">
-                                    <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
+                                    <a href="../Htmlfiles/recipe.php?id=' . $meals[$i]['id'] .  '" class="recipe">RECIPE</a>
                                     <button class="add-1">ADD</button>
                                 </div>
                                 
@@ -117,20 +132,19 @@
                     </div>
                     <div class="card">
                         <div class="front-2">
-                            <img src=' . $meals[$i+1]['image'] . ' alt="">
+                            <img src=' . $meals[$i+1]['image'] . '>
                             <div class="text">
                                 <div class="name">
                                     <h2>' . $meals[$i+1]['title'] . '</h2>
                                     <div class="cal">
-                                        Calories 100
+                                    Calories ' . $meals_calorie[$i+1] . '
                                     </div>
                                 </div>
                                 <div class="details">
-                                    The recipe Chicken Bbq could satisfy your American craving in about 1 hour.
                                 </div>
         
                                 <div class="btns">
-                                    <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
+                                    <a href="../Htmlfiles/recipe.php?id=' . $meals[$i+1]['id'] .  '" class="recipe">RECIPE</a>
                                     <button class="add-2">ADD</button>
                                 </div>
                                 
@@ -170,15 +184,13 @@
                                 <div class="name">
                                     <h2>' . $meals[$i+2]['title'] . '</h2>
                                     <div class="cal">
-                                        Calories 100
-                                    </div>
+                                    Calories ' . $meals_calorie[$i+2] . 
+                                    '</div>
                                 </div>
                                 <div class="details">
-                                    The recipe Chicken Bbq could satisfy your American craving in about 1 hour.
                                 </div>
-        
                                 <div class="btns">
-                                    <a href="../Htmlfiles/recipe.php" class="recipe">RECIPE</a>
+                                    <a href="../Htmlfiles/recipe.php?id=' . $meals[$i+2]['id'] .  '" class="recipe">RECIPE</a>
                                     <button class="add-3">ADD</button>
                                 </div>
                                 
