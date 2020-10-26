@@ -38,7 +38,7 @@
         </nav>
         <?php
             $id=$_GET['id'];
-            $recipe_url = "https://api.spoonacular.com/recipes/" . $id . "/information?apiKey=ede20294fc5a404ab6beb0ca1dc3b472&includeNutrition=true";
+            $recipe_url = "https://api.spoonacular.com/recipes/" . $id . "/information?apiKey=2212e7d4117843fbb2c07b357d8fa2e5&includeNutrition=true";
             $recipe_json = file_get_contents($recipe_url);
             $recipe = json_decode($recipe_json, true);
             $ingredients_data = $recipe['extendedIngredients'];

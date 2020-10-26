@@ -54,41 +54,9 @@ if(!isset($_SESSION['username']))
             
         </div>
 
-        <div class="progress-bar">
-            <div class="circle-1">
-                <div class="round-1" data-value="0.87" data-size="120" data-thickness="12">
-                    <strong></strong>
-                    
-                </div>
-                <h3>Fats</h3>
-            </div>
-            <div class="circle-2">
-                <div class="round-2" data-value="0.03" data-size="160" data-thickness="13">
-                    <strong></strong>
-                </div>
-                <h3>Vitamins</h3>
-            </div>
-            <!-- <div class="circle-3">
-                <div class="round-3" data-value=".55" data-size="200" data-thickness="14">
-                    <strong></strong>
-                </div>
-                <h3>Proteins</h3>
-            </div> -->
-            <div class="circle-4">
-                <div class="round-4" data-value="0.45" data-size="160" data-thickness="13">
-                    <strong></strong>
-                </div>
-                <h3>Carbohydrates</h3>
-            </div>
-            <div class="circle-5">
-                <div class="round-5" data-value="0.12" data-size="120" data-thickness="12">
-                    <strong></strong>
-                </div>
-                <h3>Minerals</h3>
-            </div>
-        </div>
+        
 
-        <hr>
+        
         <?php
                    
                     if(!empty($_GET['calories'])){
@@ -197,10 +165,43 @@ if(!isset($_SESSION['username']))
 
                 
             </div>
+
         </div>
-        <div id="btn">
-             <button class="new-meal">Generate New Meal</button>
+        <hr>
+        <div class="progress-bar">
+            <div class="circle-1">
+                <div class="round-1" data-value="0.87" data-size="120" data-thickness="12">
+                    <strong></strong>
+                    
+                </div>
+                <h3>Fats: '.$calories_array['nutrients']['fat'].'</h3>
+            </div>
+            <div class="circle-2">
+                <div class="round-2" data-value="0.03" data-size="160" data-thickness="13">
+                    <strong></strong>
+                </div>
+                <h3>Calories: '.$calories_array['nutrients']['calories'].'</h3>
+            </div>
+            <!-- <div class="circle-3">
+                <div class="round-3" data-value=".55" data-size="200" data-thickness="14">
+                    <strong></strong>
+                </div>
+                <h3></h3>
+            </div> -->
+            <div class="circle-4">
+                <div class="round-4" data-value="0.45" data-size="160" data-thickness="13">
+                    <strong></strong>
+                </div>
+                <h3>Carbohydrates: '.$calories_array['nutrients']['carbohydrates'].'</h3>
+            </div>
+            <div class="circle-5">
+                <div class="round-5" data-value="0.12" data-size="120" data-thickness="12">
+                    <strong></strong>
+                </div>
+                <h3>Proteins: '.$calories_array['nutrients']['protein'].'</h3>
+            </div>
         </div>
+        
         ';
         ?>
 
