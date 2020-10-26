@@ -68,12 +68,12 @@ if(!isset($_SESSION['username']))
                 </div>
                 <h3>Vitamins</h3>
             </div>
-            <div class="circle-3">
+            <!-- <div class="circle-3">
                 <div class="round-3" data-value=".55" data-size="200" data-thickness="14">
                     <strong></strong>
                 </div>
                 <h3>Proteins</h3>
-            </div>
+            </div> -->
             <div class="circle-4">
                 <div class="round-4" data-value="0.45" data-size="160" data-thickness="13">
                     <strong></strong>
@@ -98,16 +98,16 @@ if(!isset($_SESSION['username']))
                         // $vegan = $_GET['vegan'];
                         // $ketogenic = $_GET['ketogenic'];
                         // $any = $_GET['any'];
-                        $calories_url = 'https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories='.$calories.'&apiKey=9d29dd77f35b4d199ea2925104bb46d8';
+                        $calories_url = 'https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories='.$calories.'&apiKey=2212e7d4117843fbb2c07b357d8fa2e5';
 
                         $calories_json = file_get_contents($calories_url);
                         $calories_array = json_decode($calories_json, true);
                         $a=$calories_array['meals'][0]['id'];
                         $b=$calories_array['meals'][1]['id'];
                         $c=$calories_array['meals'][2]['id'];
-                        $recipe_url_a = 'https://api.spoonacular.com/recipes/'.$a.'/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true';
-                        $recipe_url_b = 'https://api.spoonacular.com/recipes/'.$b.'/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true';
-                        $recipe_url_c = 'https://api.spoonacular.com/recipes/'.$c.'/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true';
+                        $recipe_url_a = 'https://api.spoonacular.com/recipes/'.$a.'/information?apiKey=2212e7d4117843fbb2c07b357d8fa2e5&includeNutrition=true';
+                        $recipe_url_b = 'https://api.spoonacular.com/recipes/'.$b.'/information?apiKey=2212e7d4117843fbb2c07b357d8fa2e5&includeNutrition=true';
+                        $recipe_url_c = 'https://api.spoonacular.com/recipes/'.$c.'/information?apiKey=2212e7d4117843fbb2c07b357d8fa2e5&includeNutrition=true';
                         $recipe_json_a = file_get_contents($recipe_url_a);
                          $recipe_json_b = file_get_contents($recipe_url_b);
                           $recipe_json_c = file_get_contents($recipe_url_c);
@@ -124,19 +124,20 @@ if(!isset($_SESSION['username']))
                     <img src="'.$recipe_array_a['image'].'">
                     <div class="txt">
                         <h3>'.$calories_array['meals'][0]['title'].'</h3>
-                        <h4>Ready In-'.$calories_array['meals'][0]['readyInMinutes'] .'min <br>Servings-'. $calories_array['meals'][0]['servings'] .' <br>Calories-300</h4>
+                        <h4>Ready In-'.$calories_array['meals'][0]['readyInMinutes'] .'min <br>Servings-'. $calories_array['meals'][0]['servings'] .' <br>Calories- ' . $recipe_array_a['nutrition']['nutrients'][0]['amount'] . '</h4>
                         <h3>Nutrients</h3>
-                        <h4>Protien-34</h4>
-                        <h4>Fat-23</h4>
-                        <h4>Saturated Fat-3</h4>
-                        <h4>Carbohydrate-23</h4>
-                        <h4>Sugar-2.6</h4>
-                        <h4>Sodium-5</h4>
+                        <h4>Protien- ' . $recipe_array_a['nutrition']['nutrients'][9]['amount'] . '</h4>
+                        <h4>Fat-' . $recipe_array_a['nutrition']['nutrients'][1]['amount'] . '</h4>
+                        <h4>Saturated Fat- ' . $recipe_array_a['nutrition']['nutrients'][2]['amount'] . '</h4>
+                        <h4>Carbohydrate- ' . $recipe_array_a['nutrition']['nutrients'][3]['amount'] . '</h4>
+                        <h4>Sugar-' . $recipe_array_a['nutrition']['nutrients'][5]['amount'] . '</h4>
+                        <h4>Sodium-' . $recipe_array_a['nutrition']['nutrients'][7]['amount'] . '</h4>
                         
                     </div>
+
                     <div class="btns">
                         <button class="consumed">Consumed</button>
-                        <a href="recipe.php" class="recipe">Get Recipe</a>
+                        <a href="recipe.php?id='.$calories_array['meals'][0]['id'].'" class="recipe">Get Recipe</a>
                     </div>
                 </div>
                 <button class="view-more-1">View More</button>
@@ -149,19 +150,19 @@ if(!isset($_SESSION['username']))
                     <img src="'.$recipe_array_b['image'].'">
                     <div class="txt">
                         <h3>'. $calories_array['meals'][1]['title'] .'</h3>
-                        <h4>Ready In-'.$calories_array['meals'][1]['readyInMinutes'] .'min <br>Servings-'.$calories_array['meals'][1]['servings'] .' <br>Calories-300</h4>
+                        <h4>Ready In-'.$calories_array['meals'][1]['readyInMinutes'] .'min <br>Servings-'.$calories_array['meals'][1]['servings'] .' <br>Calories-' . $recipe_array_b['nutrition']['nutrients'][0]['amount'] . '</h4>
                         <h3>Nutrients</h3>
-                        <h4>Protien-34</h4>
-                        <h4>Fat-23</h4>
-                        <h4>Saturated Fat-3</h4>
-                        <h4>Carbohydrate-23</h4>
-                        <h4>Sugar-2.6</h4>
-                        <h4>Sodium-5</h4>
+                        <h4>Protien-' . $recipe_array_b['nutrition']['nutrients'][9]['amount'] . '</h4>
+                        <h4>Fat-'. $recipe_array_b['nutrition']['nutrients'][1]['amount'] . '</h4>
+                        <h4>Saturated Fat-' . $recipe_array_b['nutrition']['nutrients'][2]['amount'] . '</h4>
+                        <h4>Carbohydrate-' . $recipe_array_b['nutrition']['nutrients'][3]['amount'] . '</h4>
+                        <h4>Sugar-' . $recipe_array_b['nutrition']['nutrients'][5]['amount'] . '</h4>
+                        <h4>Sodium-' . $recipe_array_b['nutrition']['nutrients'][7]['amount'] . '</h4>
                         
                     </div>
                     <div class="btns">
                         <button class="consumed">Consumed</button>
-                        <a href="recipe.php" class="recipe">Get Recipe</a>
+                        <a href="recipe.php?id='.$calories_array['meals'][1]['id'].'" class="recipe">Get Recipe</a>
                     </div>
                 </div>
                 <button class="view-more-2">View More</button>
@@ -176,19 +177,19 @@ if(!isset($_SESSION['username']))
                     <img src="'.$recipe_array_c['image'].'">
                     <div class="txt">
                         <h3>'.$calories_array['meals'][2]['title'] .'</h3>
-                        <h4>Ready In-'. $calories_array['meals'][2]['readyInMinutes'] .' min <br>Servings-'. $calories_array['meals'][2]['servings'].' <br>Calories-300</h4>
+                        <h4>Ready In-'. $calories_array['meals'][2]['readyInMinutes'] .' min <br>Servings-'. $calories_array['meals'][2]['servings'].' <br>Calories-' . $recipe_array_c['nutrition']['nutrients'][0]['amount'] . '</h4>
                         <h3>Nutrients</h3>
-                        <h4>Protien-34</h4>
-                        <h4>Fat-23</h4>
-                        <h4>Saturated Fat-3</h4>
-                        <h4>Carbohydrate-23</h4>
-                        <h4>Sugar-2.6</h4>
-                        <h4>Sodium-5</h4>
+                        <h4>Protien-' . $recipe_array_c['nutrition']['nutrients'][9]['amount'] . '</h4>
+                        <h4>Fat-'. $recipe_array_c['nutrition']['nutrients'][1]['amount'] . '</h4>
+                        <h4>Saturated Fat-' . $recipe_array_c['nutrition']['nutrients'][2]['amount'] . '</h4>
+                        <h4>Carbohydrate-' . $recipe_array_c['nutrition']['nutrients'][3]['amount'] . '</h4>
+                        <h4>Sugar-' . $recipe_array_c['nutrition']['nutrients'][5]['amount'] . '</h4>
+                        <h4>Sodium-' . $recipe_array_c['nutrition']['nutrients'][7]['amount'] . '</h4>
                         
                     </div>
                     <div class="btns">
                         <button class="consumed">Consumed</button>
-                        <a href="recipe.php" class="recipe">Get Recipe</a>
+                        <a href="recipe.php?id='.$calories_array['meals'][2]['id'].'" class="recipe">Get Recipe</a>
                     </div>
                 </div>
 

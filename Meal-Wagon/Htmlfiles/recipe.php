@@ -38,7 +38,7 @@
         </nav>
         <?php
             $id=$_GET['id'];
-            $recipe_url = "https://api.spoonacular.com/recipes/" . $id . "/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true";
+            $recipe_url = "https://api.spoonacular.com/recipes/" . $id . "/information?apiKey=ede20294fc5a404ab6beb0ca1dc3b472&includeNutrition=true";
             $recipe_json = file_get_contents($recipe_url);
             $recipe = json_decode($recipe_json, true);
             $ingredients_data = $recipe['extendedIngredients'];
@@ -60,7 +60,7 @@
                 }
             }
             
-            $equipment_url = "https://api.spoonacular.com/recipes/" . $id . "/equipmentWidget.json?apiKey=9d29dd77f35b4d199ea2925104bb46d8";
+            $equipment_url = "https://api.spoonacular.com/recipes/" . $id . "/equipmentWidget.json?apiKey=2212e7d4117843fbb2c07b357d8fa2e5";
             $equipment_json = file_get_contents($equipment_url);
             $equipments_data = json_decode($equipment_json, true);
             $equipments = $equipments_data['equipment'];

@@ -25,7 +25,7 @@ if(!isset($_SESSION['username']))
     {
         $servername = "localhost";
         $username = "root";
-        $password = "";
+        $password = "shresth";
 
         // Create connection
         $conn = new mysqli($servername, $username, $password);
@@ -42,10 +42,11 @@ if(!isset($_SESSION['username']))
                 echo "Database SELECTED" . "<br>";
 
 
-        $calories = $_POST['calories'];
+        $calories = $_GET['calories'];
+        $user = $_SESSION['username'];
         #$cuisine = $_POST['cuisine'];
         #$intolerance = $_POST['intolerance'];
-        $sql = 'INSERT INTO user (Dailiy_Calorie_Target) VALUES (' . $calories . ') WHERE Name = ' . $_SESSION['username'];
+        $sql = "UPDATE user SET Dailiy_Calorie_Target=".$calories." WHERE Name='".$user."'";
         if ($conn->query($sql) === TRUE) {
         } else {
         echo "Error inserting data: " . $conn->error . "<br>";
@@ -82,10 +83,7 @@ if(!isset($_SESSION['username']))
             <form action="" method="POST">
             
             <div class="cal-details">
-<<<<<<< HEAD
-                
-=======
->>>>>>> 80085f60367a71ea858e3d2edd42017a6f6a8e23
+
                 <input type="number" placeholder="Enter Calories" name="calories">
                 <p>Not sure? Head over to <a href="">BMI/Calories calculator</a> to calculate your <br> daily calories,BMR and much more.</p>
     
@@ -94,20 +92,15 @@ if(!isset($_SESSION['username']))
             <hr>
             <h3>CHOOSE DIET TYPE</h3>
             <div class="diet-types">
-<<<<<<< HEAD
+
 
                 <img src="../Images/Group 15.png" alt="">
                 <img src="../Images/Group 14.png" alt="">
                 <img src="../Images/Group 13.png" alt="">
                 <img src="../Images/Group 12.png" alt="">
                 <img src="../Images/Group 11.png" alt="">
-=======
-                <button><img src="../Images/Group 15.png" alt=""></button>
-                <button><img src="../Images/Group 14.png" alt=""></button>
-                <button><img src="../Images/Group 13.png" alt=""></button>
-                <button><img src="../Images/Group 12.png" alt=""></button>
-                <button><img src="../Images/Group 11.png" alt=""></button>
->>>>>>> 80085f60367a71ea858e3d2edd42017a6f6a8e23
+
+
             </div>
 
             <hr>
@@ -144,12 +137,11 @@ if(!isset($_SESSION['username']))
             <div>
                 <button id="save">SAVE AND CONTINUE</button>
             </div>
-<<<<<<< HEAD
-=======
             </form>
             
+            
 
->>>>>>> 80085f60367a71ea858e3d2edd42017a6f6a8e23
+
 
             </form>
              

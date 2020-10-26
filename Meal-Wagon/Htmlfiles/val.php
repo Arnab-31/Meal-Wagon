@@ -1,6 +1,6 @@
 <?php
 session_start();
-$con=mysqli_connect('localhost','root','');
+$con=mysqli_connect('localhost','root','shresth');
 if($con){
 	echo("Connection successful");
 }
@@ -17,7 +17,7 @@ $result=mysqli_query($con,$q);
 $num=mysqli_num_rows($result);
 if($num==1){
 	$_SESSION['username']=$name;
-	header('location:mealplan.php');
+	header('location:preferences.php');
 }
 else{
 	header('location:login.php');
