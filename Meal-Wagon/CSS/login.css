@@ -114,6 +114,46 @@ a:hover{
     font-size: 1.2rem;
 }
 
+@media (max-width: 1100px){
+
+    .login-container{
+        width: 25%;
+    }
+    .image{
+        width: 70%;
+    }
+}
+
+@media (max-width: 1025px){
+
+    .user-img{
+        height: 18vh;
+    }
+
+    .input-div{
+        font-size: 14px;
+    }
+
+    .login .btn{
+        font-size: 1rem;
+    }
+    
+}
+
+@media (max-width: 1006px){
+    .input-div{
+        padding: 12px 12px;
+    }
+}
+@media (max-width: 956px){
+    .login-container{
+        width: 30%;
+    }
+    .input-div{
+        padding-right: 0px;
+    }
+}
+
 
 
 

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$con=mysqli_connect('localhost','root','shresth');
+$con=mysqli_connect('localhost','root','');
 if($con){
 	echo("Account created successfully!");
 	header('location:login.php');
