@@ -89,15 +89,42 @@ if(!isset($_SESSION['username']))
         </div>
 
         <hr>
+        <?php
+                   
+                    if(!empty($_GET['calories'])){
+                        $calories = $_GET['calories'];
+                        // $vegetarian = $_GET['vegetarian'];
+                        // $gluten = $_GET['gluten'];
+                        // $vegan = $_GET['vegan'];
+                        // $ketogenic = $_GET['ketogenic'];
+                        // $any = $_GET['any'];
+                        $calories_url = 'https://api.spoonacular.com/mealplanner/generate?timeFrame=day&targetCalories='.$calories.'&apiKey=9d29dd77f35b4d199ea2925104bb46d8';
 
+                        $calories_json = file_get_contents($calories_url);
+                        $calories_array = json_decode($calories_json, true);
+                        $a=$calories_array['meals'][0]['id'];
+                        $b=$calories_array['meals'][1]['id'];
+                        $c=$calories_array['meals'][2]['id'];
+                        $recipe_url_a = 'https://api.spoonacular.com/recipes/'.$a.'/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true';
+                        $recipe_url_b = 'https://api.spoonacular.com/recipes/'.$b.'/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true';
+                        $recipe_url_c = 'https://api.spoonacular.com/recipes/'.$c.'/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true';
+                        $recipe_json_a = file_get_contents($recipe_url_a);
+                         $recipe_json_b = file_get_contents($recipe_url_b);
+                          $recipe_json_c = file_get_contents($recipe_url_c);
+                        $recipe_array_a = json_decode($recipe_json_a, true);
+                        $recipe_array_b = json_decode($recipe_json_b, true);
+                        $recipe_array_c = json_decode($recipe_json_c, true);
+                        
+                    }
+        echo '
         <div class="card">
             <div class="meals">
                 <h2>Breakfast</h2>
                 <div class="box-1">
-                    <img src="../Images/image 18.png" alt="">
+                    <img src="'.$recipe_array_a['image'].'">
                     <div class="txt">
-                        <h3>Iron Man Fritto</h3>
-                        <h4>Ready In-20 min <br>Serving-4 <br>Calories-300</h4>
+                        <h3>'.$calories_array['meals'][0]['title'].'</h3>
+                        <h4>Ready In-'.$calories_array['meals'][0]['readyInMinutes'] .'min <br>Servings-'. $calories_array['meals'][0]['servings'] .' <br>Calories-300</h4>
                         <h3>Nutrients</h3>
                         <h4>Protien-34</h4>
                         <h4>Fat-23</h4>
@@ -119,10 +146,10 @@ if(!isset($_SESSION['username']))
                 <h2>Lunch</h2>
                 <div class="box-2">
         
-                    <img src="../Images/image 18.png" alt="">
+                    <img src="'.$recipe_array_b['image'].'">
                     <div class="txt">
-                        <h3>Iron Man Fritto</h3>
-                        <h4>Ready In-20 min <br>Serving-4 <br>Calories-300</h4>
+                        <h3>'. $calories_array['meals'][1]['title'] .'</h3>
+                        <h4>Ready In-'.$calories_array['meals'][1]['readyInMinutes'] .'min <br>Servings-'.$calories_array['meals'][1]['servings'] .' <br>Calories-300</h4>
                         <h3>Nutrients</h3>
                         <h4>Protien-34</h4>
                         <h4>Fat-23</h4>
@@ -146,10 +173,10 @@ if(!isset($_SESSION['username']))
                 <h2>Dinner</h2>
                 <div class="box-3">
         
-                    <img src="../Images/image 18.png" alt="">
+                    <img src="'.$recipe_array_c['image'].'">
                     <div class="txt">
-                        <h3>Iron Man Fritto</h3>
-                        <h4>Ready In-20 min <br>Serving-4 <br>Calories-300</h4>
+                        <h3>'.$calories_array['meals'][2]['title'] .'</h3>
+                        <h4>Ready In-'. $calories_array['meals'][2]['readyInMinutes'] .' min <br>Servings-'. $calories_array['meals'][2]['servings'].' <br>Calories-300</h4>
                         <h3>Nutrients</h3>
                         <h4>Protien-34</h4>
                         <h4>Fat-23</h4>
@@ -173,6 +200,9 @@ if(!isset($_SESSION['username']))
         <div id="btn">
              <button class="new-meal">Generate New Meal</button>
         </div>
+        ';
+        ?>
+
     </section>
     <script>
         var y=new Date();

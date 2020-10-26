@@ -41,23 +41,25 @@ if(!isset($_SESSION['username']))
             <img src="../Images/image 13.png" alt="">
             
         </div>
-
+        <form action="mealplan.php" method="GET">
         <div class="main">
             <h3>ENTER DAILY CALORIES</h3>
             <div class="cal-details">
-                <input type="number" placeholder="Enter Calories">
+                
+                <input type="number" placeholder="Enter Calories" name="calories">
                 <p>Not sure? Head over to <a href="">BMI/Calories calculator</a> to calculate your <br> daily calories,BMR and much more.</p>
     
             </div>
+           
             <hr>
             <h3>CHOOSE DIET TYPE</h3>
             <div class="diet-types">
 
-                <button><img src="../Images/Group 15.png" alt=""></button>
-                <button><img src="../Images/Group 14.png" alt=""></button>
-                <button><img src="../Images/Group 13.png" alt=""></button>
-                <button><img src="../Images/Group 12.png" alt=""></button>
-                <button><img src="../Images/Group 11.png" alt=""></button>
+                <img src="../Images/Group 15.png" alt="">
+                <img src="../Images/Group 14.png" alt="">
+                <img src="../Images/Group 13.png" alt="">
+                <img src="../Images/Group 12.png" alt="">
+                <img src="../Images/Group 11.png" alt="">
             </div>
 
             <hr>
@@ -94,9 +96,9 @@ if(!isset($_SESSION['username']))
             <div>
                 <button id="save">SAVE AND CONTINUE</button>
             </div>
-            
 
-
+            </form>
+             
 
         </div>
 
