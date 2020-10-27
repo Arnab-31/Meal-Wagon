@@ -104,7 +104,7 @@ if(!isset($_SESSION['username']))
                     </div>
 
                     <div class="btns">
-                        <button class="consumed">Consumed</button>
+                        
                         <a href="recipe.php?id='.$calories_array['meals'][0]['id'].'" class="recipe">Get Recipe</a>
                     </div>
                 </div>
@@ -129,7 +129,7 @@ if(!isset($_SESSION['username']))
                         
                     </div>
                     <div class="btns">
-                        <button class="consumed">Consumed</button>
+                        
                         <a href="recipe.php?id='.$calories_array['meals'][1]['id'].'" class="recipe">Get Recipe</a>
                     </div>
                 </div>
@@ -156,7 +156,7 @@ if(!isset($_SESSION['username']))
                         
                     </div>
                     <div class="btns">
-                        <button class="consumed">Consumed</button>
+                        
                         <a href="recipe.php?id='.$calories_array['meals'][2]['id'].'" class="recipe">Get Recipe</a>
                     </div>
                 </div>

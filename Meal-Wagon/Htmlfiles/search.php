@@ -70,11 +70,11 @@
         </div>
 
         <div class="drop-down">
-            <select name="ingredients" id="ingr">
+            <!-- <select name="ingredients" id="ingr">
                 <option value="" disabled selected>Select Your Ingredients</option>
                 <option value="Salt">Salt</option>
                 <option value="Sugar">Sugar</option>
-            </select>
+            </select> -->
         </div>
         
         <?php
@@ -99,7 +99,7 @@
         
                                 <div class="btns">
                                     <a href="../Htmlfiles/recipe.php?id=' . $meals[$i]['id'] .  '" class="recipe">RECIPE</a>
-                                    <button class="add-1">ADD</button>
+                                    
                                 </div>
                                 
                             </div>
@@ -145,7 +145,7 @@
         
                                 <div class="btns">
                                     <a href="../Htmlfiles/recipe.php?id=' . $meals[$i+1]['id'] .  '" class="recipe">RECIPE</a>
-                                    <button class="add-2">ADD</button>
+                                    
                                 </div>
                                 
                             </div>
@@ -191,7 +191,7 @@
                                 </div>
                                 <div class="btns">
                                     <a href="../Htmlfiles/recipe.php?id=' . $meals[$i+2]['id'] .  '" class="recipe">RECIPE</a>
-                                    <button class="add-3">ADD</button>
+                                    
                                 </div>
                                 
                             </div>

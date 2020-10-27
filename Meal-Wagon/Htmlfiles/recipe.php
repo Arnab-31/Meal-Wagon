@@ -88,7 +88,7 @@
                         <h3>Sugar - ' . $recipe['nutrition']['nutrients'][5]['amount'] . '</h3>
                         <h3>Sodium - ' . $recipe['nutrition']['nutrients'][7]['amount'] . '</h3>
 
-                        <button class="add">ADD TO MEAL</button>
+                        
                     </div>
                     
                     
