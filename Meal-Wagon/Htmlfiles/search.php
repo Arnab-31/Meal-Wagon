@@ -33,7 +33,7 @@
                     <?php
                     if(!empty($_GET['search'])){
                         $search = $_GET['search'];
-                        $meals_url = 'https://api.spoonacular.com/recipes/complexSearch?query=' . $search . '&apiKey=2212e7d4117843fbb2c07b357d8fa2e5';
+                        $meals_url = 'https://api.spoonacular.com/recipes/complexSearch?query=' . $search . '&apiKey=9d29dd77f35b4d199ea2925104bb46d8';
                         $meals_json = file_get_contents($meals_url);
                         $meals_array = json_decode($meals_json, true);
 
@@ -43,7 +43,7 @@
                         for($i=0;$i<9;$i++)
                         {
                             $meal_id = $meals_array['results'][$i]['id'];
-                            $info_url = 'https://api.spoonacular.com/recipes/' . $meal_id . '/information?apiKey=2212e7d4117843fbb2c07b357d8fa2e5&includeNutrition=true';
+                            $info_url = 'https://api.spoonacular.com/recipes/' . $meal_id . '/information?apiKey=9d29dd77f35b4d199ea2925104bb46d8&includeNutrition=true';
                             $info_json = file_get_contents($info_url);
                             $info_array = json_decode($info_json, true);
                             $summary=$info_array['summary'];

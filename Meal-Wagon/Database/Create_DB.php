@@ -84,8 +84,9 @@ if ($conn->query($sql) === TRUE) {
 
 // sql to create meal table
 $sql = "CREATE TABLE  meal (
+  user            VARCHAR(30),
   mealId          VARCHAR(10) primary key,
-  planId          VARCHAR(10),
+  image           VARCHAR(3000),
   isConsumed      INT check(isConsumed in (0,1)),
   name            VARCHAR(30),
   type            VARCHAR(20) check(type in ('Breakfast','Lunch','Dinner')),  
@@ -97,8 +98,7 @@ $sql = "CREATE TABLE  meal (
   saturated_fat   INT,
   carb            INT,
   sugar           INT,
-  sodium          INT,
-  FOREIGN KEY (planId) REFERENCES meal_plan(planId) 
+  sodium          INT
 )";
   
 if ($conn->query($sql) === TRUE) {
