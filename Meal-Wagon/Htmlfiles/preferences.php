@@ -20,40 +20,6 @@ if(!isset($_SESSION['username']))
     <title>Meal_Wagon</title>
 </head>
 
-<?php
-    if(!empty($_POST['calories']))
-    {
-        $servername = "localhost";
-        $username = "root";
-        $password = "shresth";
-
-        // Create connection
-        $conn = new mysqli($servername, $username, $password);
-        // Check connection
-        if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Selecting the database
-        $db=mysqli_select_db($conn,'MealWagon');
-        if (!$db)
-                echo "Database not selected" . "<br>";
-            else
-                echo "Database SELECTED" . "<br>";
-
-
-        $calories = $_GET['calories'];
-        $user = $_SESSION['username'];
-        #$cuisine = $_POST['cuisine'];
-        #$intolerance = $_POST['intolerance'];
-        $sql = "UPDATE user SET Dailiy_Calorie_Target=".$calories." WHERE Name='".$user."'";
-        if ($conn->query($sql) === TRUE) {
-        } else {
-        echo "Error inserting data: " . $conn->error . "<br>";
-        }
-
-    }
-?>
 
 <body>
     <section class="evr">
