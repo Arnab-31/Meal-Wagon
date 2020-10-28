@@ -27,6 +27,7 @@ if(!isset($_SESSION['username']))
     integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
     crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-circle-progress/1.2.0/circle-progress.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.6.0/Chart.min.js"></script>
 </head>
 <body>
     <section class="evr">
@@ -53,9 +54,6 @@ if(!isset($_SESSION['username']))
             <img src="../Images/image 29.png" alt="">
             
         </div>
-
-        
-
         
         <?php
             $servername = "localhost";
@@ -366,13 +364,13 @@ if(!isset($_SESSION['username']))
                     <strong></strong>
                     
                 </div>
-                <h3>Fats: '.$fat_consumed . '/' .$total_fats.'</h3>
+                <h3>Fats: '.$fat_consumed . '/<span id="total_fat">' .$total_fats.'</span></h3>
             </div>
             <div class="circle-2">
                 <div class="round-2" data-value="' .$calories_percentage. '" data-size="160" data-thickness="13">
                     <strong></strong>
                 </div>
-                <h3>Calories: '.$calories_consumed . '/' . $total_calories.'</h3>
+                <h3>Calories: '.$calories_consumed . '/<span id="total_calories">' . $total_calories.'</span></h3>
             </div>
             <!-- <div class="circle-3">
                 <div class="round-3" data-value="" data-size="200" data-thickness="14">
@@ -384,18 +382,19 @@ if(!isset($_SESSION['username']))
                 <div class="round-4" data-value="' .$carb_percentage. '" data-size="160" data-thickness="13">
                     <strong></strong>
                 </div>
-                <h3>Carbohydrates: '.$carb_consumed . '/' .$total_carb.'</h3>
+                <h3>Carbohydrates: '.$carb_consumed . '/<span id="total_carb">' .$total_carb.'</span></h3>
             </div>
             <div class="circle-5">
                 <div class="round-5" data-value="' .$protein_percentage. '" data-size="120" data-thickness="12">
                     <strong></strong>
                 </div>
-                <h3>Proteins: '.$protein_consumed . '/' .$total_protein.'</h3>
+                <h3>Proteins: '.$protein_consumed . '/<span id="total_protein">' .$total_protein.'</span></h3>
             </div>
         </div>
         
         ';
         ?>
+       <canvas id="myChart" width="100" height="30"></canvas>
 
     </section>
     <script>
@@ -471,6 +470,78 @@ if(!isset($_SESSION['username']))
             var replacetext=$('.box-3').hasClass("showContent")?"View Less":"View More";
             $(this).text(replacetext);
         });
+
+    </script>
+
+    <script>
+    
+
+    var total_fat = document.getElementById('total_fat').innerHTML;
+    var total_calories = document.getElementById('total_calories').innerHTML;
+    var total_carb = document.getElementById('total_carb').innerHTML;
+    var total_protein = document.getElementById('total_protein').innerHTML;
+
+    let myChart = document.getElementById('myChart').getContext('2d');
+
+    // Global Options
+    Chart.defaults.global.defaultFontFamily = 'Lato';
+    Chart.defaults.global.defaultFontSize = 18;
+    Chart.defaults.global.defaultFontColor = '#777';
+
+    let massPopChart = new Chart(myChart, {
+      type:'bar', // bar, horizontalBar, pie, line, doughnut, radar, polarArea
+      data:{
+        labels:['Fats', 'Calorie', 'Carbohydrate', 'Proteins'],
+        datasets:[{
+          label:'Nutrient',
+          data:[
+            total_fat,
+            total_calories,
+            total_carb,
+            total_protein
+          ],
+          //backgroundColor:'green',
+          backgroundColor:[
+            'rgba(255, 99, 132, 0.6)',
+            'rgba(54, 162, 235, 0.6)',
+            'rgba(255, 206, 86, 0.6)',
+            'rgba(45, 206, 86, 0.6)'
+          ],
+          borderWidth:1,
+          borderColor:'#777',
+          hoverBorderWidth:3,
+          hoverBorderColor:'#000'
+        }]
+      },
+      options:{
+        title:{
+          display:true,
+          text:'Meal Plan',
+          fontsize: 25
+        },
+        legend:{
+          display:true,
+          position:'right',
+          labels:{
+            fontColor:'#000',
+            font: 25
+            }
+          },
+        layout:{
+          padding:{
+            left:50,
+            right:0,
+            bottom:0,
+            top:0
+          },
+        responsive: true,
+        maintainAspectRatio: false, 
+        },
+        tooltips:{
+          enabled:true
+        },
+      },
+    });
     </script>
 </body>
 </html>

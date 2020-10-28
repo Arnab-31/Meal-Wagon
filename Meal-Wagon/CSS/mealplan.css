@@ -430,8 +430,8 @@ hr{
     border:1px solid #f1513c;
 }
 
-form .hide{
-    display: none;
+#myChart{
+    height: 10%;
 }
 
 @media (max-width: 1170px){
