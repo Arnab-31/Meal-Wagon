@@ -131,22 +131,29 @@
     //     echo "Error creating user table: " . $conn->error . "<br>";
     // }
 
-    $sql = "SELECT * from user WHERE Name='Arnab3'";
-    if ($result = mysqli_query($conn, $sql))
-    {
-        if(mysqli_num_rows($result) > 0)
-        {
-            $row = mysqli_fetch_row($result);
-            $calories_consumed = $row[9];
-            $protein_consumed = $row[10];
-            $carb_consumed = $row[11];
-            $fat_consumed = $row[12];
-        }
-    }
+    // $sql = "SELECT * from user WHERE Name='Arnab3'";
+    // if ($result = mysqli_query($conn, $sql))
+    // {
+    //     if(mysqli_num_rows($result) > 0)
+    //     {
+    //         $row = mysqli_fetch_row($result);
+    //         $calories_consumed = $row[9];
+    //         $protein_consumed = $row[10];
+    //         $carb_consumed = $row[11];
+    //         $fat_consumed = $row[12];
+    //     }
+    // }
 
-    echo $calories_consumed/2000 . '</br>';
-    echo $protein_consumed . '</br>';
-    echo $carb_consumed. '</br>';
-    echo $fat_consumed . '</br>';
+    // echo $calories_consumed/2000 . '</br>';
+    // echo $protein_consumed . '</br>';
+    // echo $carb_consumed. '</br>';
+    // echo $fat_consumed . '</br>';
+
+    $sql = "DELETE FROM meal WHERE user = 'Arnab2'";
+    if ($conn->query($sql) === TRUE) {
+        echo "user table created successfully" . "<br>";
+    } else {
+        echo "Error creating user table: " . $conn->error . "<br>";
+    }
 ?>
 

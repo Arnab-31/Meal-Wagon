@@ -373,9 +373,6 @@ hr{
     color: aliceblue;
     background-color: #f1513c;
     border: 1px solid aliceblue;
-    font-size: 6px;
-    margin-bottom: 8px;
-    margin-right: 8px;
 }
 .box-1 .btns .recipe:hover,.box-2 .btns .recipe:hover,.box-3 .btns .recipe:hover{
     color: #f1513c;
@@ -408,7 +405,6 @@ hr{
 }
 .new-meal{
     margin-top: 50px;
-    width: 20%;
     padding: .7rem 1rem;
     color: aliceblue;
     background-color: #f1513c;

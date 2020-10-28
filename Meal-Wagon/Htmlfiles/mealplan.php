@@ -75,6 +75,27 @@ if(!isset($_SESSION['username']))
                 echo "Database selected" . "<br>";
                    
             
+            if(!empty($_POST['cal']))
+            {
+                $sql = "DELETE FROM meal WHERE user = '$user'";
+                if ($conn->query($sql) === TRUE) {
+                    echo "user table created successfully" . "<br>";
+                } else {
+                    echo "Error creating user table: " . $conn->error . "<br>";
+                }
+
+                $sql = "UPDATE user
+                SET Dailiy_Calorie_Intake = 0, Daily_Protein_Intake = 0, Daily_Carb_Intake = 0, Daily_Fat_Intake = 0 
+                    WHERE Name = '$user'";
+    
+                if ($conn->query($sql) === TRUE) {
+                    echo "Calories updated" . "<br>";
+                } else {
+                    echo "Error updating calories: " . $conn->error . "<br>";
+                }
+
+                $_GET['calories'] = $_POST['cal'];
+            }
 
             if(!empty($_POST['calories']))
             {
@@ -282,7 +303,7 @@ if(!isset($_SESSION['username']))
                             <input style="display:none;" name="protein" type="number" value="'.  $meal_protein_a .'">
                             <input style="display:none;" name="fat" type="number" value="'.  $meal_fat_a .'">
                             <input style="display:none;" name="carb" type="number" value="'.  $meal_carb_a .'">
-                            <button>Consume</button>
+                            <button class="consumed">Consume</button>
                         </form>
                         <a href="recipe.php?id='.$meal_id_a.'" class="recipe">Get Recipe</a>
                     </div>
@@ -312,7 +333,7 @@ if(!isset($_SESSION['username']))
                         <input style="display:none;" name="protein" type="number" value="'.  $meal_protein_b .'">
                         <input style="display:none;" name="fat" type="number" value="'.  $meal_fat_b .'">
                         <input style="display:none;" name="carb" type="number" value="'.  $meal_carb_b .'">
-                        <button>Consume</button>
+                        <button class="consumed">Consume</button>
                     </form>
                         <a href="recipe.php?id='.$meal_id_b.'" class="recipe">Get Recipe</a>
                     </div>
@@ -345,7 +366,7 @@ if(!isset($_SESSION['username']))
                         <input style="display:none;" name="protein" type="number" value="'.  $meal_protein_c .'">
                         <input style="display:none;" name="fat" type="number" value="'.  $meal_fat_c .'">
                         <input style="display:none;" name="carb" type="number" value="'.  $meal_carb_c .'">
-                        <button>Consume</button>
+                        <button class="consumed">Consume</button>
                     </form>
                         <a href="recipe.php?id='.$meal_id_c.'" class="recipe">Get Recipe</a>
                     </div>
@@ -391,7 +412,12 @@ if(!isset($_SESSION['username']))
                 <h3>Proteins: '.$protein_consumed . '/<span id="total_protein">' .$total_protein.'</span></h3>
             </div>
         </div>
-        
+        <div id="btn">
+        <form action="" method="POST">
+            <input type="text" value="' . $total_calories .'" name="cal" style="display:none;">
+            <button class="new-meal">Generate New Meal</button>
+        </form>
+        </div>
         ';
         ?>
        <canvas id="myChart" width="100" height="30"></canvas>
