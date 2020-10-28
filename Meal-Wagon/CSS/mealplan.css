@@ -429,6 +429,11 @@ hr{
     margin-top: 48px;
     border:1px solid #f1513c;
 }
+
+form .hide{
+    display: none;
+}
+
 @media (max-width: 1170px){
     .container-nav .right-nav{
         width: 55%;

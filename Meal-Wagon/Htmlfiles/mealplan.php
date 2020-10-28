@@ -77,6 +77,20 @@ if(!isset($_SESSION['username']))
                 echo "Database selected" . "<br>";
                    
             
+
+            if(!empty($_POST['calories']))
+            {
+                $sql = "UPDATE user
+                SET Dailiy_Calorie_Intake = Dailiy_Calorie_Intake +" . $_POST['calories'] . ", Daily_Protein_Intake = Daily_Protein_Intake +" . $_POST['protein'] . ", Daily_Carb_Intake = Daily_Carb_Intake +" . $_POST['carb'] . ", Daily_Fat_Intake = Daily_Fat_Intake +" . $_POST['fat'] . "
+                    WHERE Name = '$user'";
+    
+                if ($conn->query($sql) === TRUE) {
+                    echo "Calories updated" . "<br>";
+                } else {
+                    echo "Error updating calories: " . $conn->error . "<br>";
+                }
+            }
+        
             $sql = "SELECT * from meal WHERE user='$user'";
 
         if ($result = mysqli_query($conn, $sql))
@@ -223,8 +237,28 @@ if(!isset($_SESSION['username']))
         }
             $total_calories = $meal_calories_a + $meal_calories_b + $meal_calories_c;
             $total_fats = $meal_fat_a + $meal_fat_b + $meal_fat_c;
-            $total_carb = $meal_carb_a + $meal_carb_a + $meal_carb_a;
+            $total_carb = $meal_carb_a + $meal_carb_b + $meal_carb_c;
             $total_protein = $meal_protein_a + $meal_protein_b + $meal_protein_c;
+
+            $sql = "SELECT * from user WHERE Name='$user'";
+            if ($result = mysqli_query($conn, $sql))
+            {
+                if(mysqli_num_rows($result) > 0)
+                {
+                    $row = mysqli_fetch_row($result);
+                    $calories_consumed = $row[9];
+                    $protein_consumed = $row[10];
+                    $carb_consumed = $row[11];
+                    $fat_consumed = $row[12];
+                }
+            }
+
+            $calories_percentage = ($calories_consumed/$total_calories);
+            $fats_percentage = ($fat_consumed/$total_fats);
+            $carb_percentage = ($carb_consumed/$total_carb);
+            $protein_percentage = ($protein_consumed/$total_protein);
+
+      
         echo '
         <div class="card">
             <div class="meals">
@@ -245,7 +279,13 @@ if(!isset($_SESSION['username']))
                     </div>
 
                     <div class="btns">
-                        
+                        <form action="" method="POST"> 
+                            <input style="display:none;" name="calories" type="number" value="'.  $meal_calories_a .'">
+                            <input style="display:none;" name="protein" type="number" value="'.  $meal_protein_a .'">
+                            <input style="display:none;" name="fat" type="number" value="'.  $meal_fat_a .'">
+                            <input style="display:none;" name="carb" type="number" value="'.  $meal_carb_a .'">
+                            <button>Consume</button>
+                        </form>
                         <a href="recipe.php?id='.$meal_id_a.'" class="recipe">Get Recipe</a>
                     </div>
                 </div>
@@ -267,10 +307,15 @@ if(!isset($_SESSION['username']))
                         <h4>Carbohydrate- ' . $meal_carb_b . '</h4>
                         <h4>Sugar-' . $meal_sugar_b . '</h4>
                         <h4>Sodium-' . $meal_sodium_b . '</h4>
-                        
                     </div>
                     <div class="btns">
-                        
+                    <form action="" method="POST"> 
+                        <input style="display:none;" name="calories" type="number" value="'.  $meal_calories_b .'">
+                        <input style="display:none;" name="protein" type="number" value="'.  $meal_protein_b .'">
+                        <input style="display:none;" name="fat" type="number" value="'.  $meal_fat_b .'">
+                        <input style="display:none;" name="carb" type="number" value="'.  $meal_carb_b .'">
+                        <button>Consume</button>
+                    </form>
                         <a href="recipe.php?id='.$meal_id_b.'" class="recipe">Get Recipe</a>
                     </div>
                 </div>
@@ -297,7 +342,13 @@ if(!isset($_SESSION['username']))
                         
                     </div>
                     <div class="btns">
-                        
+                    <form action="" method="POST"> 
+                        <input style="display:none;" name="calories" type="number" value="'.  $meal_calories_c .'">
+                        <input style="display:none;" name="protein" type="number" value="'.  $meal_protein_c .'">
+                        <input style="display:none;" name="fat" type="number" value="'.  $meal_fat_c .'">
+                        <input style="display:none;" name="carb" type="number" value="'.  $meal_carb_c .'">
+                        <button>Consume</button>
+                    </form>
                         <a href="recipe.php?id='.$meal_id_c.'" class="recipe">Get Recipe</a>
                     </div>
                 </div>
@@ -311,35 +362,35 @@ if(!isset($_SESSION['username']))
         <hr>
         <div class="progress-bar">
             <div class="circle-1">
-                <div class="round-1" data-value="0.87" data-size="120" data-thickness="12">
+                <div class="round-1" data-value="' .$fats_percentage. '" data-size="120" data-thickness="12">
                     <strong></strong>
                     
                 </div>
-                <h3>Fats: '.$total_fats.'</h3>
+                <h3>Fats: '.$fat_consumed . '/' .$total_fats.'</h3>
             </div>
             <div class="circle-2">
-                <div class="round-2" data-value="0.03" data-size="160" data-thickness="13">
+                <div class="round-2" data-value="' .$calories_percentage. '" data-size="160" data-thickness="13">
                     <strong></strong>
                 </div>
-                <h3>Calories: '.$total_calories.'</h3>
+                <h3>Calories: '.$calories_consumed . '/' . $total_calories.'</h3>
             </div>
             <!-- <div class="circle-3">
-                <div class="round-3" data-value=".55" data-size="200" data-thickness="14">
+                <div class="round-3" data-value="" data-size="200" data-thickness="14">
                     <strong></strong>
                 </div>
                 <h3></h3>
             </div> -->
             <div class="circle-4">
-                <div class="round-4" data-value="0.45" data-size="160" data-thickness="13">
+                <div class="round-4" data-value="' .$carb_percentage. '" data-size="160" data-thickness="13">
                     <strong></strong>
                 </div>
-                <h3>Carbohydrates: '.$total_carb.'</h3>
+                <h3>Carbohydrates: '.$carb_consumed . '/' .$total_carb.'</h3>
             </div>
             <div class="circle-5">
-                <div class="round-5" data-value="0.12" data-size="120" data-thickness="12">
+                <div class="round-5" data-value="' .$protein_percentage. '" data-size="120" data-thickness="12">
                     <strong></strong>
                 </div>
-                <h3>Proteins: '.$total_protein.'</h3>
+                <h3>Proteins: '.$protein_consumed . '/' .$total_protein.'</h3>
             </div>
         </div>
         

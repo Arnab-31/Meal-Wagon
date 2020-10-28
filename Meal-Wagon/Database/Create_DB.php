@@ -37,10 +37,10 @@ $sql = "CREATE TABLE user (
   Height_in                INT,
   Goal                     VARCHAR(15) check(Goal in ('Lose','Maintain','Gain')),
   Activity_Factor          INT,
-  Dailiy_Calorie_Target    INT,
-  Daily_Protein_Target     INT,
-  Daily_Carb_Target        INT,
-  Daily_Fat_Target         INT,
+  Dailiy_Calorie_Intake    INT DEFAULT 0,
+  Daily_Protein_Intake     INT DEFAULT 0,
+  Daily_Carb_Intake        INT DEFAULT 0,
+  Daily_Fat_Intake         INT DEFAULT 0,
   Daily_Water_Intake       INT,  
   Cuisine                  VARCHAR(30)
 )";
@@ -88,7 +88,7 @@ $sql = "CREATE TABLE  meal (
   mealId          VARCHAR(10) primary key,
   image           VARCHAR(3000),
   isConsumed      INT check(isConsumed in (0,1)),
-  name            VARCHAR(30),
+  name            VARCHAR(100),
   type            VARCHAR(20) check(type in ('Breakfast','Lunch','Dinner')),  
   prep_time       INT,
   servings        INT,
