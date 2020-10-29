@@ -95,6 +95,7 @@ body{
 
 .top-img img{
     position: relative;
+    width: 100%;
 }
 .top-img .txt{
     position: absolute;

@@ -1,6 +1,6 @@
 <?php
 session_start();
-$con=mysqli_connect('localhost','root','');
+$con=mysqli_connect('localhost','root','shresth');
 if($con){
 	echo("Connection successful");
 }

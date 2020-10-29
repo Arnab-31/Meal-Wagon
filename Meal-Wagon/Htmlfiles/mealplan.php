@@ -40,6 +40,7 @@ if(!isset($_SESSION['username']))
                 </div>
                 <a href="preferences.php">Preferences</a>
                 <a href=""  class="active">My Meal</a>
+                <a href="logout.php"  class="active">LogOut</a>
                 <h2>Hello, <br><?php echo $_SESSION['username']; ?> </h2>
             </div>
         </nav>
@@ -58,7 +59,7 @@ if(!isset($_SESSION['username']))
         <?php
             $servername = "localhost";
             $username = "root";
-            $password = "";
+            $password = "shresth";
             $user = $_SESSION['username'];
             
             // Create connection
@@ -70,18 +71,18 @@ if(!isset($_SESSION['username']))
     
             $db=mysqli_select_db($conn,'MealWagon');
             if (!$db)
-                    echo "Database not selected" . "<br>";
+                    echo "" . "<br>";
             else
-                echo "Database selected" . "<br>";
+                echo "" . "<br>";
                    
             
             if(!empty($_POST['cal']))
             {
                 $sql = "DELETE FROM meal WHERE user = '$user'";
                 if ($conn->query($sql) === TRUE) {
-                    echo "user table created successfully" . "<br>";
+                    echo "" . "<br>";
                 } else {
-                    echo "Error creating user table: " . $conn->error . "<br>";
+                    echo "" . $conn->error . "<br>";
                 }
 
                 $sql = "UPDATE user
@@ -89,9 +90,9 @@ if(!isset($_SESSION['username']))
                     WHERE Name = '$user'";
     
                 if ($conn->query($sql) === TRUE) {
-                    echo "Calories updated" . "<br>";
+                    echo "" . "<br>";
                 } else {
-                    echo "Error updating calories: " . $conn->error . "<br>";
+                    echo "" . $conn->error . "<br>";
                 }
 
                 $_GET['calories'] = $_POST['cal'];
@@ -104,9 +105,9 @@ if(!isset($_SESSION['username']))
                     WHERE Name = '$user'";
     
                 if ($conn->query($sql) === TRUE) {
-                    echo "Calories updated" . "<br>";
+                    echo "" . "<br>";
                 } else {
-                    echo "Error updating calories: " . $conn->error . "<br>";
+                    echo "" . $conn->error . "<br>";
                 }
             }
         
@@ -203,9 +204,9 @@ if(!isset($_SESSION['username']))
                 
                 $sql = "INSERT into Meal(user, mealId,name,image,prep_time,calories,servings,protein,fat,saturated_fat,carb,sugar,sodium) VALUES ('$user', '$meal_id_a','$meal_title_a','$meal_image_a','$meal_time_a','$meal_calories_a','$meal_servings_a','$meal_protein_a','$meal_fat_a','$meal_satfat_a','$meal_carb_a','$meal_sugar_a','$meal_sodium_a')";    
                 if ($conn->query($sql) === TRUE) {
-                    echo "meal table created successfully " . "<br>";
+                    echo "" . "<br>";
                 }else{
-                    echo "Error creating meal table: " . $conn->error . "<br>";
+                    echo "" . $conn->error . "<br>";
                 }
 
 
@@ -224,9 +225,9 @@ if(!isset($_SESSION['username']))
                 
                 $sql = "INSERT into Meal(user, mealId,name,image,prep_time,calories,servings,protein,fat,saturated_fat,carb,sugar,sodium) VALUES ('$user', '$meal_id_b','$meal_title_b','$meal_image_b','$meal_time_b','$meal_calories_b','$meal_servings_b','$meal_protein_b','$meal_fat_b','$meal_satfat_b','$meal_carb_b','$meal_sugar_b','$meal_sodium_b')";    
                 if ($conn->query($sql) === TRUE) {
-                    echo "meal table created successfully " . "<br>";
+                    echo "" . "<br>";
                 }else{
-                    echo "Error creating meal table: " . $conn->error . "<br>";
+                    echo "" . $conn->error . "<br>";
                 }
 
 
@@ -247,9 +248,9 @@ if(!isset($_SESSION['username']))
                 
                 $sql = "INSERT into Meal(user, mealId,name,image,prep_time,calories,servings,protein,fat,saturated_fat,carb,sugar,sodium) VALUES ('$user', '$meal_id_c','$meal_title_c','$meal_image_c','$meal_time_c','$meal_calories_c','$meal_servings_c','$meal_protein_c','$meal_fat_c','$meal_satfat_c','$meal_carb_c','$meal_sugar_c','$meal_sodium_c')";    
                 if ($conn->query($sql) === TRUE) {
-                    echo "meal table created successfully " . "<br>";
+                    echo "" . "<br>";
                 }else{
-                    echo "Error creating meal table: " . $conn->error . "<br>";
+                    echo "" . $conn->error . "<br>";
                 }
                 
             }
@@ -279,6 +280,40 @@ if(!isset($_SESSION['username']))
 
       
         echo '
+        <div class="progress-bar">
+            <div class="circle-1">
+                <div class="round-1" data-value="' .$fats_percentage. '" data-size="120" data-thickness="12">
+                    <strong></strong>
+                    
+                </div>
+                <h3>Fats: '.$fat_consumed . '/<span id="total_fat">' .$total_fats.'</span></h3>
+            </div>
+            <div class="circle-2">
+                <div class="round-2" data-value="' .$calories_percentage. '" data-size="160" data-thickness="13">
+                    <strong></strong>
+                </div>
+                <h3>Calories: '.$calories_consumed . '/<span id="total_calories">' . $total_calories.'</span></h3>
+            </div>
+            <!-- <div class="circle-3">
+                <div class="round-3" data-value="" data-size="200" data-thickness="14">
+                    <strong></strong>
+                </div>
+                <h3></h3>
+            </div> -->
+            <div class="circle-4">
+                <div class="round-4" data-value="' .$carb_percentage. '" data-size="160" data-thickness="13">
+                    <strong></strong>
+                </div>
+                <h3>Carbohydrates: '.$carb_consumed . '/<span id="total_carb">' .$total_carb.'</span></h3>
+            </div>
+            <div class="circle-5">
+                <div class="round-5" data-value="' .$protein_percentage. '" data-size="120" data-thickness="12">
+                    <strong></strong>
+                </div>
+                <h3>Proteins: '.$protein_consumed . '/<span id="total_protein">' .$total_protein.'</span></h3>
+            </div>
+        </div>
+        <hr>
         <div class="card">
             <div class="meals">
                 <h2>Breakfast</h2>
@@ -379,39 +414,7 @@ if(!isset($_SESSION['username']))
 
         </div>
         <hr>
-        <div class="progress-bar">
-            <div class="circle-1">
-                <div class="round-1" data-value="' .$fats_percentage. '" data-size="120" data-thickness="12">
-                    <strong></strong>
-                    
-                </div>
-                <h3>Fats: '.$fat_consumed . '/<span id="total_fat">' .$total_fats.'</span></h3>
-            </div>
-            <div class="circle-2">
-                <div class="round-2" data-value="' .$calories_percentage. '" data-size="160" data-thickness="13">
-                    <strong></strong>
-                </div>
-                <h3>Calories: '.$calories_consumed . '/<span id="total_calories">' . $total_calories.'</span></h3>
-            </div>
-            <!-- <div class="circle-3">
-                <div class="round-3" data-value="" data-size="200" data-thickness="14">
-                    <strong></strong>
-                </div>
-                <h3></h3>
-            </div> -->
-            <div class="circle-4">
-                <div class="round-4" data-value="' .$carb_percentage. '" data-size="160" data-thickness="13">
-                    <strong></strong>
-                </div>
-                <h3>Carbohydrates: '.$carb_consumed . '/<span id="total_carb">' .$total_carb.'</span></h3>
-            </div>
-            <div class="circle-5">
-                <div class="round-5" data-value="' .$protein_percentage. '" data-size="120" data-thickness="12">
-                    <strong></strong>
-                </div>
-                <h3>Proteins: '.$protein_consumed . '/<span id="total_protein">' .$total_protein.'</span></h3>
-            </div>
-        </div>
+        
         <div id="btn">
         <form action="" method="POST">
             <input type="text" value="' . $total_calories .'" name="cal" style="display:none;">

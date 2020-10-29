@@ -32,6 +32,7 @@ if(!isset($_SESSION['username']))
                 </div>
                 <a href="" class="active">Preferences</a>
                 <a href="mealplan.php">My Meal</a>
+                <a href="logout.php"  class="active">LogOut</a>
                 <h2>Hello, <br> <?php echo $_SESSION['username']; ?></h2>
             </div>
         </nav>
@@ -40,7 +41,7 @@ if(!isset($_SESSION['username']))
                 <p>your preferences</p>  
                 <p id="sml">Help us with your eating habits,and we will plan <br> your meals accordingly</p>
              </div>
-            <img src="../Images/image 13.png" alt="">
+            <img src="../Images/image 13.png" alt="" width="100%">
             
         </div>
         <form action="mealplan.php" method="GET">
