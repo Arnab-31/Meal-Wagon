@@ -1,6 +1,6 @@
 # MEAL WAGON
 ### A meal planner for all your nutrition needs.
-Live Demo: https://www.youtube.com/watch?v=u4t4RytSIxw
+Demo Video: https://www.youtube.com/watch?v=u4t4RytSIxw
 
 ## ABSTRACT
 To make meal planning hassle free and searching of new recipes easier for users we have made an
