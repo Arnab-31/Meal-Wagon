@@ -1,4 +1,6 @@
 # MEAL WAGON
+### A meal planner for all your nutrition needs.
+Live Demo: https://www.youtube.com/watch?v=u4t4RytSIxw&t=167s&ab_channel=ArnabPoddar
 
 ## ABSTRACT
 To make meal planning hassle free and searching of new recipes easier for users we have made an
@@ -26,7 +28,7 @@ word along with the ingredients, equipments and the nutrients associated with th
 <hr>
 
 ## PROCESS FLOW DIAGRAM
-
+![Process Flow](/ReadmeImages/process.png)
 <hr>
 
 ## FEATURES
@@ -42,10 +44,11 @@ accordingly
 <hr>
 
 ## ARCHITECTURE
-
+![Architecture](/ReadmeImages/Architecture.png)
 <hr>
 
 ## ER MODEL
+![ER Model](/ReadmeImages/ERmodel.png)
 
 ## CONCLUSION
 So we would like to conclude that, the problems regarding nutrition of people according to their preferred
@@ -58,4 +61,12 @@ privacy. This website will play an important role in making people fit and healt
 
 ## SNAPSHOTS
 
+![Snap](/ReadmeImages/Snap1.png)
+![Snap](/ReadmeImages/Snap2.png)
+![Snap](/ReadmeImages/Snap3.png)
+![Snap](/ReadmeImages/Snap4.png)
+![Snap](/ReadmeImages/Snap5.png)
+![Snap](/ReadmeImages/Snap6.png)
+![Snap](/ReadmeImages/Snap7.png)
+![Snap](/ReadmeImages/Snap8.png)
 <hr>
